@@ -4,7 +4,7 @@ LABEL description="centos image with ssh"
 ONBUILD yum -y update && yum clean all
 ADD ./files/start.sh /start.sh
 RUN yum -y install deltarpm && yum -y update && \
-	yum -y install openssh-server passwd sudo && \
+	yum -y install openssh-server passwd sudo iproute && \
 	yum clean all && \
 	mkdir /var/run/sshd && \
 	ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N '' && \
